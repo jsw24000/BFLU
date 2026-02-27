@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文化体检官——雄安毛绒玩具沙特出海数智合规平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            color: #1e3a8a;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #64748b;
+            font-size: 16px;
+        }
+        /* 上传区域样式 */
+        .upload-section {
+            border: 2px dashed #94a3b8;
+            border-radius: 8px;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .upload-section:hover {
+            border-color: #3b82f6;
+            background-color: #f8fafc;
+        }
+        .upload-icon {
+            font-size: 60px;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        .upload-text {
+            color: #475569;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .upload-tip {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        #file-input {
+            display: none;
+        }
+        /* 预览区域 */
+        .preview-section {
+            display: none;
+            margin-bottom: 30px;
+        }
+        .preview-img {
+            max-width: 400px;
+            max-height: 400px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin: 0 auto;
+            display: block;
+        }
+        /* 按钮样式 */
+        .btn {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 0 auto;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+        .btn:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+        }
+        /* 报告区域 */
+        .report-section {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            border-radius: 8px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .report-title {
+            font-size: 24px;
+            color: #1e3a8a;
+            font-weight: 600;
+        }
+        .export-btn {
+            background-color: #10b981;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        /* 报告内容 */
+        .report-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .report-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .report-card h3 {
+            color: #1e40af;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .compliant-item {
+            color: #059669;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        .compliant-item::before {
+            content: "✅";
+            margin-right: 8px;
+        }
+        .non-compliant-item {
+            color: #dc2626;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        .non-compliant-item::before {
+            content: "❌";
+            margin-right: 8px;
+        }
+        .suggest-item {
+            color: #2563eb;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        .suggest-item::before {
+            content: "💡";
+            margin-right: 8px;
+        }
+        /* 加载动画 */
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .loading-spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+            margin-bottom: 15px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>文化体检官——雄安毛绒玩具沙特出海数智合规平台</h1>
+            <p>产地：雄安新区晾马台镇 | 聚焦沙特伊斯兰文化合规审查 | 生成专业出海修改建议</p>
+        </div>
+
+        <!-- 照片上传区域 -->
+        <div class="upload-section" id="upload-area">
+            <div class="upload-icon">📷</div>
+            <div class="upload-text">点击上传玩具/包装照片</div>
+            <div class="upload-tip">支持JPG/PNG格式，单张≤10MB</div>
+            <input type="file" id="file-input" accept="image/jpeg,image/png">
+        </div>
+
+        <!-- 照片预览区域 -->
+        <div class="preview-section" id="preview-area">
+            <img src="" alt="玩具照片预览" class="preview-img" id="preview-img">
+            <button class="btn" id="detect-btn" style="margin-top: 20px;">开始合规检测</button>
+        </div>
+
+        <!-- 加载动画 -->
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p>正在检测合规性，请稍候...</p>
+        </div>
+
+        <!-- 检测报告区域 -->
+        <div class="report-section" id="report-area">
+            <div class="report-header">
+                <div class="report-title">雄安晾马台毛绒玩具沙特出海合规检测报告</div>
+                <button class="export-btn" id="export-btn">导出报告</button>
+            </div>
+            <div class="report-content" id="report-content">
+                <!-- 报告内容由JS动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 导入2500条合规语料库（核心规则简化版，完整版需导入外部JSON）
+        const saudiComplianceRules = {
+            // 宗教禁忌核心规则
+            religion: [
+                {item: "无先知形象/经文印刷", compliant: true, suggest: ""},
+                {item: "含穆罕默德先知轮廓/剪影", compliant: false, suggest: "移除所有先知相关图案，替换为伊斯兰几何花纹"},
+                {item: "玩具印古兰经文字/符号", compliant: false, suggest: "删除宗教经文，改用中性装饰图案"},
+                {item: "模仿宗教礼拜动作造型", compliant: false, suggest: "调整玩具造型，避免任何宗教仪式模仿"}
+            ],
+            // 人物/图案禁忌核心规则
+            figurePattern: [
+                {item: "无女性形象/猪狗图案", compliant: true, suggest: ""},
+                {item: "未着罩袍的女性卡通形象", compliant: false, suggest: "替换为伊斯兰几何花纹/沙漠椰枣树图案"},
+                {item: "猪/狗图案（含卡通版）", compliant: false, suggest: "移除猪狗图案，改用骆驼/椰枣树等沙特本土元素"},
+                {item: "沙特国旗比例/颜色篡改", compliant: false, suggest: "按2:3标准比例印刷国旗，颜色匹配官方规范"}
+            ],
+            // 色彩合规核心规则
+            color: [
+                {item: "主色调为浅橄榄绿/白色/米色", compliant: true, suggest: ""},
+                {item: "大面积纯红/亮黄/亮粉", compliant: false, suggest: "更换主色调为浅橄榄绿（RGB:102,153,0），禁用色占比≤5%"},
+                {item: "大面积黑色（>30%）", compliant: false, suggest: "减少黑色占比至≤5%，仅用于小面积装饰"}
+            ],
+            // 材质合规核心规则
+            material: [
+                {item: "使用有机棉/Oeko-Tex 100认证材质", compliant: true, suggest: ""},
+                {item: "使用含塑化剂的PVC材质", compliant: false, suggest: "替换为有机棉/食品级硅胶，提供SASO 2902认证报告"},
+                {item: "不可降解超薄塑料包装", compliant: false, suggest: "更换为可降解牛皮纸包装，厚度≥0.025mm"}
+            ],
+            // 功能合规核心规则
+            function: [
+                {item: "无宗教音乐/高频闪光功能", compliant: true, suggest: ""},
+                {item: "播放古兰经/流行音乐", compliant: false, suggest: "移除音乐功能，或替换为无旋律的中性提示音"},
+                {item: "闪光频率>5Hz", compliant: false, suggest: "调整闪光频率至≤5Hz，符合SASO 2902:2023标准"}
+            ],
+            // 进口合规核心规则
+            import: [
+                {item: "提供SASO 2902认证+阿语标签", compliant: true, suggest: ""},
+                {item: "无SASO 2902认证报告", compliant: false, suggest: "申请沙特SASO 2902儿童玩具安全认证，保留认证编号"},
+                {item: "包装无阿拉伯语说明", compliant: false, suggest: "添加阿语材质/安全说明，产地标注“ليانماتاي تشون ان”"}
+            ]
+        };
+
+        // DOM元素获取
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-input');
+        const previewArea = document.getElementById('preview-area');
+        const previewImg = document.getElementById('preview-img');
+        const detectBtn = document.getElementById('detect-btn');
+        const loading = document.getElementById('loading');
+        const reportArea = document.getElementById('report-area');
+        const reportContent = document.getElementById('report-content');
+        const exportBtn = document.getElementById('export-btn');
+
+        // 上传区域点击触发文件选择
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // 文件选择后预览
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    previewImg.src = event.target.result;
+                    previewArea.style.display = 'block';
+                    uploadArea.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // 检测按钮点击事件
+        detectBtn.addEventListener('click', () => {
+            // 显示加载动画
+            previewArea.style.display = 'none';
+            loading.style.display = 'block';
+
+            // 模拟检测耗时（实际需对接AI视觉检测+语料库）
+            setTimeout(() => {
+                loading.style.display = 'none';
+                reportArea.style.display = 'block';
+                generateReport();
+            }, 3000);
+        });
+
+        // 生成检测报告
+        function generateReport() {
+            let reportHtml = '';
+
+            // 宗教禁忌模块
+            reportHtml += `
+                <div class="report-card">
+                    <h3>1. 伊斯兰教宗教禁忌审查</h3>
+                    ${saudiComplianceRules.religion.map(item => {
+                        if (item.compliant) {
+                            return `<div class="compliant-item">${item.item}</div>`;
+                        } else {
+                            return `
+                                <div class="non-compliant-item">${item.item}</div>
+                                <div class="suggest-item">修改建议：${item.suggest}</div>
+                            `;
+                        }
+                    }).join('')}
+                </div>
+            `;
+
+            // 人物/图案禁忌模块
+            reportHtml += `
+                <div class="report-card">
+                    <h3>2. 人物/图案禁忌审查</h3>
+                    ${saudiComplianceRules.figurePattern.map(item => {
+                        if (item.compliant) {
+                            return `<div class="compliant-item">${item.item}</div>`;
+                        } else {
+                            return `
+                                <div class="non-compliant-item">${item.item}</div>
+                                <div class="suggest-item">修改建议：${item.suggest}</div>
+                            `;
+                        }
+                    }).join('')}
+                </div>
+            `;
+
+            // 色彩合规模块
+            reportHtml += `
+                <div class="report-card">
+                    <h3>3. 色彩合规审查</h3>
+                    ${saudiComplianceRules.color.map(item => {
+                        if (item.compliant) {
+                            return `<div class="compliant-item">${item.item}</div>`;
+                        } else {
+                            return `
+                                <div class="non-compliant-item">${item.item}</div>
+                                <div class="suggest-item">修改建议：${item.suggest}</div>
+                            `;
+                        }
+                    }).join('')}
+                </div>
+            `;
+
+            // 材质合规模块
+            reportHtml += `
+                <div class="report-card">
+                    <h3>4. 材质合规审查</h3>
+                    ${saudiComplianceRules.material.map(item => {
+                        if (item.compliant) {
+                            return `<div class="compliant-item">${item.item}</div>`;
+                        } else {
+                            return `
+                                <div class="non-compliant-item">${item.item}</div>
+                                <div class="suggest-item">修改建议：${item.suggest}</div>
+                            `;
+                        }
+                    }).join('')}
+                </div>
+            `;
+
+            // 功能合规模块
+            reportHtml += `
+                <div class="report-card">
+                    <h3>5. 功能合规审查</h3>
+                    ${saudiComplianceRules.function.map(item => {
+                        if (item.compliant) {
+                            return `<div class="compliant-item">${item.item}</div>`;
+                        } else {
+                            return `
+                                <div class="non-compliant-item">${item.item}</div>
+                                <div class="suggest-item">修改建议：${item.suggest}</div>
+                            `;
+                        }
+                    }).join('')}
+                </div>
+            `;
+
+            // 进口合规模块
+            reportHtml += `
+                <div class="report-card">
+                    <h3>6. 沙特进口合规审查</h3>
+                    ${saudiComplianceRules.import.map(item => {
+                        if (item.compliant) {
+                            return `<div class="compliant-item">${item.item}</div>`;
+                        } else {
+                            return `
+                                <div class="non-compliant-item">${item.item}</div>
+                                <div class="suggest-item">修改建议：${item.suggest}</div>
+                            `;
+                        }
+                    }).join('')}
+                </div>
+            `;
+
+            // 产地修正提示
+            reportHtml += `
+                <div class="report-card">
+                    <h3>7. 产地标注合规提示</h3>
+                    <div class="compliant-item">产地标注：雄安新区晾马台镇（正确）</div>
+                    <div class="suggest-item">阿语标注建议：منطقة تشون ان الجديدة، بلدة ليانماتاي</div>
+                </div>
+            `;
+
+            reportContent.innerHTML = reportHtml;
+        }
+
+        // 导出报告（模拟PDF导出，实际需对接jsPDF等库）
+        exportBtn.addEventListener('click', () => {
+            alert('报告已导出为PDF格式！\n（实际项目中可集成jsPDF/FileSaver.js实现真实导出）');
+        });
+    </script>
+</body>
+</html>
